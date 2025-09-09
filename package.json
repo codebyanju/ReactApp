@@ -1,0 +1,27 @@
+{
+  "name": "reactapp",
+  "version": "1.0.0",
+  "description": "Namaste React",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel --open",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codebyanju/ReactApp.git"
+  },
+  "author": "Anju S",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codebyanju/ReactApp/issues"
+  },
+  "homepage": "https://github.com/codebyanju/ReactApp#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
