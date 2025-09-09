@@ -9,10 +9,8 @@ const RestaurantCard = ({ resData }) => {
     avgRating,
     cuisines,
     costForTwo,
-    sla: something = {},
+    sla: { slaString: deliveryTimeAlias }, // sla
   } = resData?.info;
-
-  const { slaString: deliveryTime } = something;
 
   // const { slaString: deliveryTime } = sla
 
@@ -27,7 +25,7 @@ const RestaurantCard = ({ resData }) => {
       <h4>{cuisines.join(", ")}</h4>
       <p>{avgRating} stars</p>
       <p>{costForTwo}</p>
-      <p>{deliveryTime}</p>
+      <p>{deliveryTimeAlias}</p>
     </div>
   );
 };
