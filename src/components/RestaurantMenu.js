@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import ShimmerCard from "./ShimmerCard";
 
 const RestaurantMenu = () => {
-  const [resMenu, setResMenu] = useState(null);
-  const [menuItems, setResMenuItems] = useState(null);
+  const [resInfo, setResInfo] = useState(null);
 
   useEffect(() => {
     fetchResMenu();
@@ -15,25 +14,24 @@ const RestaurantMenu = () => {
     );
     const json = await data.json();
 
-    setResMenu(json?.data?.cards[2]?.card?.card?.info);
-    setResMenuItems(
-      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.itemCards
-    );
-
-    console.log(
-      "ResMenu",
-      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.itemCards
-    );
+    setResInfo(json?.data);
   };
 
-  return resMenu === null ? (
+  const { name, cuisines, costForTwoMessage } =
+    resInfo?.cards[2]?.card?.card?.info || {};
+
+  const { itemCards: menuItems } =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+      ?.card || {};
+
+  return resInfo === null ? (
     <ShimmerCard />
   ) : (
     <div className="menu">
-      <h1>{resMenu?.name}</h1>
-      <h3>{resMenu?.cuisines.join(", ")}</h3>
+      <h1>{name}</h1>
+      <p>
+        {cuisines.join(", ")} - {costForTwoMessage}{" "}
+      </p>
 
       <h3>Menu:</h3>
       <ul>
