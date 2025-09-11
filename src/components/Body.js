@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import ShimmerCard from "./ShimmerCard";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   // Local State variable - super powerful
@@ -118,10 +119,9 @@ const Body = () => {
 
       <div className="res-container">
         {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard
-            resData={restaurant}
-            key={`${restaurant?.info?.id} - ${Date.now()}`}
-          />
+          <Link to={"/res/" + restaurant?.info?.id} key={restaurant?.info?.id}>
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
 
         {/* We don’t recommend using indexes for keys if the order of items may change. This can negatively impact performance and may cause issues with component state. */}
