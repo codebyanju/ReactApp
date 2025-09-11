@@ -31,3 +31,23 @@ const RestaurantCard = ({ resData }) => {
 };
 
 export default RestaurantCard;
+
+//Navigate to restaurant menu page on click of restaurant card
+
+// import { useNavigate } from "react-router-dom";
+// const navigate = useNavigate();
+
+{
+  /* <div
+  className="res-card"
+  onClick={() => {
+    onHit(resData?.info?.id);
+    navigate("/res/" + resData?.info?.id);
+  }}
+>
+  <h3>{name}</h3>
+  <h4>{cuisines.join(", ")}</h4>
+  <p>{deliveryTimeAlias}</p>
+  ...
+</div>; */
+}

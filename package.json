@@ -4,7 +4,7 @@
   "description": "Namaste React",
   "source": "index.html",
   "scripts": {
-    "start": "parcel --open",
+    "start": "parcel --open --no-cache",
     "build": "parcel build"
   },
   "repository": {

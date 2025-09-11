@@ -37,6 +37,10 @@ const Body = () => {
   //   return () => window.removeEventListener("scroll", handleScroll);
   // }, []);
 
+  const goToRestaurant = (resId) => {
+    console.log("resId", resId);
+  };
+
   const fetchData = async () => {
     const data = await fetch(
       "https://corsproxy.io/https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4400802&lng=78.3489168&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
@@ -130,5 +134,18 @@ const Body = () => {
     </div>
   );
 };
+
+// 1. child to parent communication
+// <RestaurantCard
+//   resData={restaurant}
+//   key={restaurant.info.id}
+//   onHit={goToRestaurant}
+// />
+
+// 2. Single responsibility principle - navigate to restaurant is responsibility of RestaurantCard
+//  <RestaurantCard
+//     resData={restaurant}
+//     key={restaurant.info.id}
+// />
 
 export default Body;
