@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import ShimmerCard from "./ShimmerCard";
 
 const RestaurantMenu = () => {
   const [resMenu, setResMenu] = useState(null);
+  const [menuItems, setResMenuItems] = useState(null);
 
   useEffect(() => {
     fetchResMenu();
@@ -14,17 +16,31 @@ const RestaurantMenu = () => {
     const json = await data.json();
 
     setResMenu(json?.data?.cards[2]?.card?.card?.info);
+    setResMenuItems(
+      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+        ?.card?.itemCards
+    );
 
-    console.log("ResMenu", json?.data?.cards[2]?.card?.card?.info);
+    console.log(
+      "ResMenu",
+      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+        ?.card?.itemCards
+    );
   };
 
-  return (
+  return resMenu === null ? (
+    <ShimmerCard />
+  ) : (
     <div className="menu">
-      <h1>{resMenu.name}</h1>
-      <h3>{resMenu.cuisines.join(", ")}</h3>
+      <h1>{resMenu?.name}</h1>
+      <h3>{resMenu?.cuisines.join(", ")}</h3>
 
+      <h3>Menu:</h3>
       <ul>
-        <li>Paneer Tikka</li>
+        {menuItems?.map((item) => {
+          //   console.log("item", item);
+          return <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>;
+        })}
       </ul>
     </div>
   );
