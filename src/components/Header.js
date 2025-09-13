@@ -22,7 +22,7 @@ const Header = () => {
   // If dependency array is empty => the useEffect runs only once after the initial render. (Only Once)
   // If dependency array has variables => the useEffect runs after the initial render and whenever any of the dependencies change.
   useEffect(() => {
-    console.log("useEffect called");
+    // console.log("useEffect called");
   });
 
   return (
