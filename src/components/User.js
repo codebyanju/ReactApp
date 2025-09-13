@@ -2,21 +2,44 @@ import { useState, useEffect } from "react";
 
 const User = ({ name, location }) => {
   const [count, setCount] = useState(0);
-  const [count2] = useState(1);
+  const [userData, setUserData] = useState({
+    name: "Dummy name",
+    location: "Dummy location",
+  });
+
+  console.log(name + " render() - User");
 
   useEffect(() => {
-    // API call
-    console.log("Functional compoent - useEffect  - User");
-  });
+    console.log(name + " useEffect - User");
+    fetchData();
+
+    // cleanup
+    return () => {
+      console.log(name + " useEffect Cleanup - User");
+    };
+  }, []);
+
+  const fetchData = async () => {
+    const userData = await fetch("https://api.github.com/users/snikit");
+    const json = await userData.json();
+    setUserData(json);
+  };
+
+  const { name: gitUserName, avatar_url } = userData;
 
   return (
     <div className="user-card">
-      <h1>Count: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>Increment Count</button>
+      <div>
+        <img src={avatar_url} alt="Github avatar" />
+        <h3>GitHub User Name: {gitUserName}</h3>
+      </div>
 
-      <h2>Count2: {count2}</h2>
-      <h1>Name: {name} </h1>
-      <h3>Location: {location}</h3>
+      <div>
+        <h1>Count: {count}</h1>
+        <button onClick={() => setCount(count + 1)}>Increment Count</button>
+        <h1>Name: {name} </h1>
+        <h3>Location: {location}</h3>
+      </div>
     </div>
   );
 };

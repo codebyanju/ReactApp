@@ -14,14 +14,29 @@ class About extends Component {
     console.log("Parent componentDidMount() - AboutClass");
   }
 
+  componentDidUpdate() {
+    console.log("Parent componentDidUpdate() - AboutClass");
+  }
+
+  componentWillUnmount() {
+    console.log("Parent componentWillUnmount() - AboutClass");
+  }
+
   render() {
     console.log("Parent render() - AboutClass");
     return (
       <div>
         <h1>About</h1>
-        {/* <User name="Anju (Functional)" location="Hyderabad (Functional)" /> */}
+        {/* <User
+          name="First Child (Functional)"
+          location="Hyderabad (Functional)"
+        />
+        <User
+          name="Second Child (Functional)"
+          location="Hyderabad (Functional)"
+        /> */}
         <UserClass name="First Child " location="Hyderabad (Class)" />
-        {/* <UserClass name="Second Child " location="Hyderabad (Class)" /> */}
+        <UserClass name="Second Child " location="Hyderabad (Class)" />
       </div>
     );
   }
@@ -49,6 +64,47 @@ First Child componentDidMount()
 Second Child componentDidMount() 
 Parent componentDidMount()
 
+*/
+
+/* 
+🟢 Mounting Phase (When component is being created and inserted into the DOM)
+
+🟢 Render Phase
+Parent constructor() 
+Parent render() 
+
+First Child constructor() 
+First Child render() 
+
+Second Child constructor() 
+Second Child render() 
+
+🟢 Commit Phase
+React updates real DOM ONCE (batched)
+
+First Child componentDidMount() 
+Second Child componentDidMount() 
+Parent componentDidMount() 
+
+🟢 Updating Phase (When state or props change)
+First Child render() 
+First Child componentDidUpdate() 
+First Child Previous State:  
+Object { count: 0, userData: {Dummy Name} }
+First Child Current State:  
+Object { count: 0, userData: {Abhishek Thakur} }
+
+Second Child render() 
+Second Child componentDidUpdate() 
+Second Child Previous State:  
+Object { count: 0, userData: {Dummy Name} }
+Second Child Current State:  
+Object { count: 0, userData: {Abhishek Thakur} }
+
+🟢 Unmounting Phase (When component is being removed from the DOM)
+Parent componentWillUnmount() 
+First Child componentWillUnmount() 
+Second Child componentWillUnmount() 
 */
 
 /* 

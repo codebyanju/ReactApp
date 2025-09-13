@@ -18,13 +18,31 @@ It’s used to initialize (set up) properties.
 
     this.state = {
       count: 0,
-      count2: 100,
+      userData: {
+        name: "Dummy name",
+        location: "Dummy location",
+      },
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // API call
     console.log(this.props.name + "componentDidMount() - UserClass");
+    const userData = await fetch("https://api.github.com/users/snikit");
+    const json = await userData.json();
+    this.setState({
+      userData: json,
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log(this.props.name + "componentDidUpdate() - UserClass");
+    console.log(this.props.name + "Previous State: ", prevState);
+    console.log(this.props.name + "Current State: ", this.state);
+  }
+
+  componentWillUnmount() {
+    console.log(this.props.name + "componentWillUnmount() - UserClass");
   }
 
   /* 
@@ -34,24 +52,31 @@ It Runs automatically – when the component first loads and whenever its state 
 */
   render() {
     const { name, location } = this.props;
-    const { count, count2 } = this.state;
+    const { count } = this.state;
+    const { name: gitUserName, avatar_url } = this.state.userData;
     console.log(this.props.name + "render() - UserClass");
 
     return (
       <div className="user-card">
-        <h1>Count: {count}</h1>
-        <button
-          onClick={() => {
-            this.setState({ count: count + 1 }); // this will only update count and doesnt touch other state variables. And will trigger re-render.
-            //! this.state.count = this.getSnapshotBeforeUpdate.count + 1; // NEVER UPDATE STATE VARIABLES DIRECTLY. This won't work. Direct state mutation doesn't trigger re-render.
-          }}
-        >
-          Increment Count
-        </button>
+        <div>
+          <img src={avatar_url} alt="Github avatar" />
+          <h3>GitHub User Name: {gitUserName}</h3>
+        </div>
 
-        <h1>Count2: {count2}</h1>
-        <h2>Name: {name} </h2>
-        <h3>Location: {location}</h3>
+        <div>
+          <h2>Count: {count}</h2>
+          <button
+            onClick={() => {
+              this.setState({ count: count + 1 }); // this will only update count and doesnt touch other state variables. And will trigger re-render.
+              //! this.state.count = this.getSnapshotBeforeUpdate.count + 1; // NEVER UPDATE STATE VARIABLES DIRECTLY. This won't work. Direct state mutation doesn't trigger re-render.
+            }}
+          >
+            Increment Count
+          </button>
+
+          <h2>Name: {name} </h2>
+          <h3>Location: {location}</h3>
+        </div>
       </div>
     );
   }
