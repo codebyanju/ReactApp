@@ -7,36 +7,36 @@ class About extends Component {
   // Another way to create class component
   constructor(props) {
     super(props);
-    console.log("Parent constructor() - AboutClass");
+    console.log("Parent constructor()");
   }
 
   componentDidMount() {
-    console.log("Parent componentDidMount() - AboutClass");
+    console.log("Parent componentDidMount()");
   }
 
   componentDidUpdate() {
-    console.log("Parent componentDidUpdate() - AboutClass");
+    console.log("Parent componentDidUpdate()");
   }
 
   componentWillUnmount() {
-    console.log("Parent componentWillUnmount() - AboutClass");
+    console.log("Parent componentWillUnmount()");
   }
 
   render() {
-    console.log("Parent render() - AboutClass");
+    console.log("Parent render()");
     return (
       <div>
         <h1>About</h1>
         {/* <User
           name="First Child (Functional)"
           location="Hyderabad (Functional)"
-        />
-        <User
+        /> */}
+        {/* <User
           name="Second Child (Functional)"
           location="Hyderabad (Functional)"
         /> */}
-        <UserClass name="First Child " location="Hyderabad (Class)" />
-        <UserClass name="Second Child " location="Hyderabad (Class)" />
+        <UserClass name="First Child (Class) " location="Hyderabad (Class)" />
+        {/* <UserClass name="Second Child (Class) " location="Hyderabad (Class)" /> */}
       </div>
     );
   }
@@ -89,17 +89,13 @@ Parent componentDidMount()
 🟢 Updating Phase (When state or props change)
 First Child render() 
 First Child componentDidUpdate() 
-First Child Previous State:  
-Object { count: 0, userData: {Dummy Name} }
-First Child Current State:  
-Object { count: 0, userData: {Abhishek Thakur} }
+First Child Previous State:  { count: 0, userData: {Dummy Name} }
+First Child Current State:  { count: 0, userData: {Abhishek Thakur} }
 
 Second Child render() 
 Second Child componentDidUpdate() 
-Second Child Previous State:  
-Object { count: 0, userData: {Dummy Name} }
-Second Child Current State:  
-Object { count: 0, userData: {Abhishek Thakur} }
+Second Child Previous State:  { count: 0, userData: {Dummy Name} }
+Second Child Current State:  { count: 0, userData: {Abhishek Thakur} }
 
 🟢 Unmounting Phase (When component is being removed from the DOM)
 Parent componentWillUnmount() 

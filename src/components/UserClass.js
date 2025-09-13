@@ -14,7 +14,7 @@ It’s used to initialize (set up) properties.
 */
   constructor(props) {
     super(props); //call the constructor of the parent class (React.Component) and pass props to it to initialize this.props. So that we can use this.props in the component.
-    console.log(this.props.name + "constructor() - UserClass");
+    console.log(this.props.name + "constructor()");
 
     this.state = {
       count: 0,
@@ -27,7 +27,7 @@ It’s used to initialize (set up) properties.
 
   async componentDidMount() {
     // API call
-    console.log(this.props.name + "componentDidMount() - UserClass");
+    console.log(this.props.name + "componentDidMount()");
     const userData = await fetch("https://api.github.com/users/snikit");
     const json = await userData.json();
     this.setState({
@@ -36,13 +36,35 @@ It’s used to initialize (set up) properties.
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.props.name + "componentDidUpdate() - UserClass");
+    console.log(this.props.name + "componentDidUpdate()");
     console.log(this.props.name + "Previous State: ", prevState);
     console.log(this.props.name + "Current State: ", this.state);
+
+    // Since it is a SPA, component will never unmount even if we navigate to other page.
+    // So if you have a timer or subscription, it will keep running forever unless you clear it in componentWillUnmount.
+    this.timer = setInterval(() => {
+      console.log("Interval running");
+    }, 1000);
+
+    // Older way of doing API call on state change.
+    // New way  - 1 dependency - useEffect(() => {}, [count])
+    if (this.state.count !== prevState.count) {
+      // API call
+    }
+
+    // useEffect with dependency [props.name]
+    // New way - 2 dependency - useEffect(() => {}, [name, location])
+    if (
+      this.props.name !== prevProps.name ||
+      this.props.location !== prevProps.location
+    ) {
+      // Something else api call
+    }
   }
 
   componentWillUnmount() {
-    console.log(this.props.name + "componentWillUnmount() - UserClass");
+    clearInterval(this.timer);
+    console.log(this.props.name + "componentWillUnmount()");
   }
 
   /* 
@@ -51,10 +73,10 @@ It Returns JSX – the UI for that component.
 It Runs automatically – when the component first loads and whenever its state or props change.
 */
   render() {
+    console.log(this.props.name + "render()");
     const { name, location } = this.props;
     const { count } = this.state;
     const { name: gitUserName, avatar_url } = this.state.userData;
-    console.log(this.props.name + "render() - UserClass");
 
     return (
       <div className="user-card">

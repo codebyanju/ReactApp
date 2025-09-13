@@ -7,15 +7,33 @@ const User = ({ name, location }) => {
     location: "Dummy location",
   });
 
-  console.log(name + " render() - User");
+  /*  
+Why useEffect(async () => {}) is wrong
+
+async makes the callback return a Promise.
+React expects useEffect to return nothing or a cleanup function, not a Promise.
+Fix: define an inner async function and call it inside useEffect.
+ - useEffect(() => { 
+    async function fetchData() { ... } 
+    fetchData(); }, [])
+*/
 
   useEffect(() => {
-    console.log(name + " useEffect - User");
+    console.log(name + " useEffect");
+
+    // Since it is a SPA, component will never unmount even if we navigate to other page
+    // So if you have a timer or subscription, it will keep running forever unless you clear it in useEffect return function
+    const timer = setInterval(() => {
+      console.log("Interval running");
+    }, 1000);
+
+    // API call
     fetchData();
 
     // cleanup
     return () => {
-      console.log(name + " useEffect Cleanup - User");
+      clearInterval(timer);
+      console.log(name + " useEffect Cleanup");
     };
   }, []);
 
@@ -27,6 +45,7 @@ const User = ({ name, location }) => {
 
   const { name: gitUserName, avatar_url } = userData;
 
+  console.log(name + " render()");
   return (
     <div className="user-card">
       <div>
