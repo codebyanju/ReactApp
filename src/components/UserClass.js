@@ -40,11 +40,11 @@ It’s used to initialize (set up) properties.
     console.log(this.props.name + "Previous State: ", prevState);
     console.log(this.props.name + "Current State: ", this.state);
 
-    // Since it is a SPA, component will never unmount even if we navigate to other page.
+    //! Since it is a SPA, component will never unmount even if we navigate to other page.
     // So if you have a timer or subscription, it will keep running forever unless you clear it in componentWillUnmount.
-    this.timer = setInterval(() => {
-      console.log("Interval running");
-    }, 1000);
+    // this.timer = setInterval(() => {
+    //   console.log("Interval running");
+    // }, 1000);
 
     // Older way of doing API call on state change.
     // New way  - 1 dependency - useEffect(() => {}, [count])

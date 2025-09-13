@@ -21,11 +21,11 @@ Fix: define an inner async function and call it inside useEffect.
   useEffect(() => {
     console.log(name + " useEffect");
 
-    // Since it is a SPA, component will never unmount even if we navigate to other page
+    //! Since it is a SPA, component will never unmount even if we navigate to other page
     // So if you have a timer or subscription, it will keep running forever unless you clear it in useEffect return function
-    const timer = setInterval(() => {
-      console.log("Interval running");
-    }, 1000);
+    // const timer = setInterval(() => {
+    //   console.log("Interval running");
+    // }, 1000);
 
     // API call
     fetchData();
