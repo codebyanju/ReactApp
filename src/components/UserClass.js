@@ -28,8 +28,17 @@ class UserClass extends React.Component {
     return (
       <div className="user-card">
         <h1>Count: {count}</h1>
+        <button
+          onClick={() => {
+            this.setState({ count: count + 1 }); // this will only update count and doesnt touch other state variables. And will trigger re-render.
+            //! this.state.count = this.getSnapshotBeforeUpdate.count + 1; // NEVER UPDATE STATE VARIABLES DIRECTLY. This won't work. Direct state mutation doesn't trigger re-render.
+          }}
+        >
+          Increment Count
+        </button>
+
         <h1>Count2: {count2}</h1>
-        <h1>Name: {name} </h1>
+        <h2>Name: {name} </h2>
         <h3>Location: {location}</h3>
       </div>
     );
