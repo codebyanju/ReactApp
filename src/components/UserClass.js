@@ -11,6 +11,11 @@ class UserClass extends React.Component {
   constructor(props) {
     super(props); //call the constructor of the parent class (React.Component) and pass props to it to initialize this.props. So that we can use this.props in the component.
     console.log(props);
+
+    this.state = {
+      count: 0,
+      count2: 100,
+    };
   }
 
   // Render must be defined – it tells React what to show on the screen.
@@ -18,9 +23,12 @@ class UserClass extends React.Component {
   // It Runs automatically – when the component first loads and whenever its state or props change.
   render() {
     const { name, location } = this.props;
+    const { count, count2 } = this.state;
 
     return (
       <div className="user-card">
+        <h1>Count: {count}</h1>
+        <h1>Count2: {count2}</h1>
         <h1>Name: {name} </h1>
         <h3>Location: {location}</h3>
       </div>
@@ -42,11 +50,12 @@ export default UserClass;
 
 // 2. When you use <UserClass /> in JSX:
 // function App() {
-//   return <UserClass />;
+//   return <UserClass name="Anju" location="India" />;
 // }
 
 // React internally does something like:
-// const obj = new UserClass(props);
+// const props = { name: "Anju", location: "India" };
+// const obj = new MyComponent(props);
 // obj.render();
 
 // So yes — objects (instances) are created, but React does that for you every time the component is rendered or re-rendered
