@@ -3,6 +3,7 @@ import ShimmerCard from "./ShimmerCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RESTAURANTS_URL } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // Local State variable - super powerful
@@ -12,6 +13,7 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -76,6 +78,10 @@ const Body = () => {
   //   setListOfRestaurants((prev) => [...prev, ...newRestaurants]);
   //   setFilteredRestaurants((prev) => [...prev, ...newRestaurants]);
   // };
+
+  if (onlineStatus === false) {
+    return <h1>You are offline. Please check your internet connection</h1>;
+  }
 
   if (listOfRestaurants.length === 0) {
     return <ShimmerCard />;
