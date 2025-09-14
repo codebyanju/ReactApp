@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import ShimmerCard from "./ShimmerCard";
-import useRestaurantInfo from "../utils/useRestaurantMenu";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const resInfo = useRestaurantInfo(resId);
+  const resInfo = useRestaurantMenu(resId);
 
   const { name, cuisines, costForTwoMessage } =
     resInfo?.cards[2]?.card?.card?.info || {};

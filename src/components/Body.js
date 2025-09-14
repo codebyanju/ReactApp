@@ -2,22 +2,22 @@ import RestaurantCard from "./RestaurantCard";
 import ShimmerCard from "./ShimmerCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { RESTAURANTS_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestaurantsData from "../utils/useRestaurantsData";
 
 const Body = () => {
   // Local State variable - super powerful
   // ! Whenever a state variable updates, React re-renders the component by triggering a reconciliation cycle.
   // ! It compares the new Virtual DOM with the previous one and updates only the parts of the real DOM that have changed.
-
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const onlineStatus = useOnlineStatus();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const {
+    listOfRestaurants,
+    setListOfRestaurants,
+    filteredRestaurants,
+    setFilteredRestaurants,
+  } = useRestaurantsData();
+  const onlineStatus = useOnlineStatus();
 
   // useEffect(() => {
   //   let isFetching = false; // flag to prevent multiple calls
@@ -42,23 +42,7 @@ const Body = () => {
 
   const goToRestaurant = (resId) => {
     console.log("resId", resId);
-  };
-
-  const fetchData = async () => {
-    const data = await fetch(RESTAURANTS_URL);
-
-    const json = await data.json();
-    console.log(
-      "1st fetchData",
-      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    );
-
-    setListOfRestaurants(
-      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    );
-    setFilteredRestaurants(
-      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    );
+    setResId(resId);
   };
 
   // const getNewRestaurants = async () => {
@@ -117,7 +101,7 @@ const Body = () => {
               (res) => res.info.avgRating > 4
             );
 
-            setListOfRestaurants(filteredList);
+            setFilteredRestaurants(filteredList);
           }}
         >
           Top Rated Restaurants
