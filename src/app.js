@@ -1,4 +1,6 @@
 import { createRoot } from "react-dom/client";
+import { lazy, Suspense } from "react";
+
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
@@ -19,6 +21,17 @@ const AppLayout = () => {
   );
 };
 
+// Chunking
+// Code Splitting
+// Lazy Loading
+// Dynamic Imports
+// DYnamic Bundling
+// On Demand Loading
+
+// lazy is a function
+// Suspense is a component
+const Grocery = lazy(() => import("./components/Grocery"));
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -36,6 +49,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>loading</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
         path: "/res/:resId",
