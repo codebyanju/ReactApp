@@ -21,15 +21,17 @@ const AppLayout = () => {
   );
 };
 
-// Chunking
-// Code Splitting
-// Lazy Loading
-// Dynamic Imports
-// DYnamic Bundling
-// On Demand Loading
+/*
+Chunking
+Code Splitting
+Lazy Loading
+Dynamic Imports
+DYnamic Bundling
+On Demand Loading
 
-// lazy is a function
-// Suspense is a component
+lazy is a function
+Suspense is a component
+*/
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const appRouter = createBrowserRouter([
