@@ -29,35 +29,48 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
-      <div className="logo">
-        <img src={LOGO_URL} alt="Food Logo" width="150" />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <li>
-            <Link to="/grocery">Grocery</Link>
-          </li>
-          <li>Cart</li>
-          <li
-            className="login"
-            onClick={() => {
-              btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
-            }}
-          >
-            {btnName}
-          </li>
-        </ul>
+    <div className="shadow-sm bg-gray-50 mb-3">
+      <div className="flex justify-between items-center max-w-8/10 mx-auto">
+        {/* Logo */}
+        <div className="w-24 p-2">
+          <Link to="/">
+            <img src={LOGO_URL} alt="Food Logo" width="150" />
+          </Link>
+        </div>
+
+        {/* Nav Items */}
+        <div>
+          <ul className="flex items-center gap-10 font-semibold">
+            <li className="cursor-pointer">
+              Online Status: {onlineStatus ? "🟢" : "🔴"}
+            </li>
+            <li className="rounded cursor-pointer hover:text-orange-500">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="rounded cursor-pointer hover:text-orange-500">
+              <Link to="/about">About Us</Link>
+            </li>
+            <li className="rounded cursor-pointer hover:text-orange-500">
+              <Link to="/contact">Contact Us</Link>
+            </li>
+            <li className="rounded cursor-pointer hover:text-orange-500">
+              <Link to="/grocery">Grocery</Link>
+            </li>
+            <li className="rounded cursor-pointer hover:text-orange-500">
+              Cart
+            </li>
+            <li
+              className="rounded cursor-pointer hover:text-orange-500"
+              onClick={() => {
+                btnName === "Login"
+                  ? setBtnName("Logout")
+                  : setBtnName("Login");
+              }}
+            >
+              {btnName}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
