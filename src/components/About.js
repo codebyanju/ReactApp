@@ -64,7 +64,7 @@ class About extends Component {
 
     return (
       <div className="max-w-8/10 mx-auto">
-        <h1 className="text-3xl font-bold mb-3">About</h1>
+        <h1 className="text-3xl font-bold mb-3">About Us</h1>
         {/* <User
           name="First Child (Functional)"
           location="Hyderabad (Functional)"
