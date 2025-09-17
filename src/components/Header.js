@@ -26,7 +26,21 @@ const Header = () => {
     // console.log("useEffect called");
   });
 
+  const onLinkActive = ({ isActive }) => {
+    const baseStyle = "rounded cursor-pointer";
+    return isActive
+      ? `${baseStyle} text-orange-500`
+      : `${baseStyle} rounded cursor-pointer hover:text-orange-500`;
+  };
+
   const onlineStatus = useOnlineStatus();
+
+  const navLinks = [
+    { link: "/", title: "Home" },
+    { link: "/about", title: "About" },
+    { link: "/contact", title: "Contact" },
+    { link: "/grocery", title: "Grocery" },
+  ];
 
   return (
     <div className="shadow-sm bg-gray-50 mb-3">
@@ -40,57 +54,34 @@ const Header = () => {
 
         {/* Nav Items */}
         <div>
-          <ul className="flex items-center gap-10 font-semibold">
+          <ul id="menu" className="flex items-center gap-10 font-semibold">
             <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
 
+            {navLinks.map((nav) => (
+              <li key={nav.link}>
+                <NavLink to={nav.link} className={onLinkActive}>
+                  {nav.title}
+                </NavLink>
+              </li>
+            ))}
+
+            {/* 
             <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? "rounded cursor-pointer text-orange-500"
-                    : "rounded cursor-pointer hover:text-orange-500"
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "rounded cursor-pointer text-orange-500"
-                    : "rounded cursor-pointer hover:text-orange-500"
-                }
-                to="/about"
-              >
+              <NavLink className={onLinkActive} to="/about">
                 About Us
               </NavLink>
             </li>
             <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "rounded cursor-pointer text-orange-500"
-                    : "rounded cursor-pointer hover:text-orange-500"
-                }
-                to="/contact"
-              >
+              <NavLink className={onLinkActive} to="/contact">
                 Contact Us
               </NavLink>
             </li>
             <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "rounded cursor-pointer text-orange-500"
-                    : "rounded cursor-pointer hover:text-orange-500"
-                }
-                to="/grocery"
-              >
+              <NavLink className={onLinkActive} to="/grocery">
                 Grocery
               </NavLink>
-            </li>
+            </li> */}
+
             <li>Cart</li>
             <li
               onClick={() => {

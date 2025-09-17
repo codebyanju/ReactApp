@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* NavLink active
+ #menu a.active {
+  background-color: red;
+  
+} */
+
 /* .header {
   border: 1px solid black;
   display: flex;
