@@ -72,7 +72,7 @@ const Body = () => {
   }
 
   return (
-    <div className="max-w-8/10 mx-auto py-3 ">
+    <div className="max-w-8/10 mx-auto py-3">
       {/* Search, Top Rated */}
       <div>
         {/* Search */}
@@ -101,7 +101,7 @@ const Body = () => {
 
           {/* Top Rated */}
           <button
-            className="bg-gray-200 p-2 rounded cursor-pointer hover:bg-gray-300 "
+            className="bg-gray-200 p-2 rounded cursor-pointer hover:bg-gray-300"
             onClick={() => {
               const filteredList = listOfRestaurants.filter(
                 (res) => res.info.avgRating > 4

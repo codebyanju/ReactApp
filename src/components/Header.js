@@ -1,6 +1,6 @@
 import { LOGO_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
@@ -41,26 +41,58 @@ const Header = () => {
         {/* Nav Items */}
         <div>
           <ul className="flex items-center gap-10 font-semibold">
-            <li className="cursor-pointer">
-              Online Status: {onlineStatus ? "🟢" : "🔴"}
+            <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
+
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive
+                    ? "rounded cursor-pointer text-orange-500"
+                    : "rounded cursor-pointer hover:text-orange-500"
+                }
+              >
+                Home
+              </NavLink>
             </li>
-            <li className="rounded cursor-pointer hover:text-orange-500">
-              <Link to="/">Home</Link>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "rounded cursor-pointer text-orange-500"
+                    : "rounded cursor-pointer hover:text-orange-500"
+                }
+                to="/about"
+              >
+                About Us
+              </NavLink>
             </li>
-            <li className="rounded cursor-pointer hover:text-orange-500">
-              <Link to="/about">About Us</Link>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "rounded cursor-pointer text-orange-500"
+                    : "rounded cursor-pointer hover:text-orange-500"
+                }
+                to="/contact"
+              >
+                Contact Us
+              </NavLink>
             </li>
-            <li className="rounded cursor-pointer hover:text-orange-500">
-              <Link to="/contact">Contact Us</Link>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "rounded cursor-pointer text-orange-500"
+                    : "rounded cursor-pointer hover:text-orange-500"
+                }
+                to="/grocery"
+              >
+                Grocery
+              </NavLink>
             </li>
-            <li className="rounded cursor-pointer hover:text-orange-500">
-              <Link to="/grocery">Grocery</Link>
-            </li>
-            <li className="rounded cursor-pointer hover:text-orange-500">
-              Cart
-            </li>
+            <li>Cart</li>
             <li
-              className="rounded cursor-pointer hover:text-orange-500"
               onClick={() => {
                 btnName === "Login"
                   ? setBtnName("Logout")

@@ -63,7 +63,7 @@ It’s used to initialize (set up) properties.
   }
 
   componentWillUnmount() {
-    clearInterval(this.timer);
+    // clearInterval(this.timer);
     console.log(this.props.name + "componentWillUnmount()");
   }
 
@@ -79,15 +79,22 @@ It Runs automatically – when the component first loads and whenever its state 
     const { name: gitUserName, avatar_url } = this.state.userData;
 
     return (
-      <div className="user-card">
+      <div className="my-3 flex justify-between">
         <div>
-          <img src={avatar_url} alt="Github avatar" />
-          <h3>GitHub User Name: {gitUserName}</h3>
+          <img
+            src={avatar_url}
+            alt="Github avatar"
+            className="rounded-md h-[240px] w-full "
+          />
+          <h3 className="text-lg font-semibold my-3">
+            GitHub User Name: {gitUserName}
+          </h3>
         </div>
 
-        <div>
-          <h2>Count: {count}</h2>
+        <div className="flex flex-col gap-3">
+          <h2 className="text-2xl">Count: {count}</h2>
           <button
+            className="bg-gray-200 p-2 rounded cursor-pointer hover:bg-gray-300"
             onClick={() => {
               this.setState({ count: count + 1 }); // this will only update count and doesnt touch other state variables. And will trigger re-render.
               //! this.state.count = this.getSnapshotBeforeUpdate.count + 1; // NEVER UPDATE STATE VARIABLES DIRECTLY. This won't work. Direct state mutation doesn't trigger re-render.
@@ -96,8 +103,8 @@ It Runs automatically – when the component first loads and whenever its state 
             Increment Count
           </button>
 
-          <h2>Name: {name} </h2>
-          <h3>Location: {location}</h3>
+          <h2 className="text-xl">Name: {name} </h2>
+          <h3 className="text-xl">Location: {location}</h3>
         </div>
       </div>
     );

@@ -24,9 +24,47 @@ class About extends Component {
 
   render() {
     console.log("Parent render()");
+    const content = `
+    REACT LIFECYCLE
+    
+    🟢 Mounting Phase (When component is being created and inserted into the DOM)
+
+    🟢 Render Phase
+    Parent constructor() 
+    Parent render() 
+    
+    First Child constructor() 
+    First Child render() 
+    
+    Second Child constructor() 
+    Second Child render() 
+    
+    🟢 Commit Phase
+    React updates real DOM ONCE (batched)
+    
+    First Child componentDidMount() 
+    Second Child componentDidMount() 
+    Parent componentDidMount() 
+    
+    🟢 Updating Phase (When state or props change)
+    First Child render() 
+    First Child componentDidUpdate() 
+    First Child Previous State:  { count: 0, userData: {Dummy Name} }
+    First Child Current State:  { count: 0, userData: {Abhishek Thakur} }
+    
+    Second Child render() 
+    Second Child componentDidUpdate() 
+    Second Child Previous State:  { count: 0, userData: {Dummy Name} }
+    Second Child Current State:  { count: 0, userData: {Abhishek Thakur} }
+    
+    🟢 Unmounting Phase (When component is being removed from the DOM)
+    Parent componentWillUnmount() 
+    First Child componentWillUnmount() 
+    Second Child componentWillUnmount()`;
+
     return (
-      <div>
-        <h1>About</h1>
+      <div className="max-w-8/10 mx-auto">
+        <h1 className="text-3xl font-bold mb-3">About</h1>
         {/* <User
           name="First Child (Functional)"
           location="Hyderabad (Functional)"
@@ -37,6 +75,8 @@ class About extends Component {
         /> */}
         <UserClass name="First Child (Class) " location="Hyderabad (Class)" />
         {/* <UserClass name="Second Child (Class) " location="Hyderabad (Class)" /> */}
+
+        <pre>{content}</pre>
       </div>
     );
   }

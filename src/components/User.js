@@ -32,7 +32,7 @@ Fix: define an inner async function and call it inside useEffect.
 
     // cleanup
     return () => {
-      clearInterval(timer);
+      // clearInterval(timer);
       console.log(name + " useEffect Cleanup");
     };
   }, []);
@@ -47,17 +47,28 @@ Fix: define an inner async function and call it inside useEffect.
 
   console.log(name + " render()");
   return (
-    <div className="user-card">
+    <div className="my-3 flex justify-between">
       <div>
-        <img src={avatar_url} alt="Github avatar" />
-        <h3>GitHub User Name: {gitUserName}</h3>
+        <img
+          src={avatar_url}
+          alt="Github avatar"
+          className="rounded-md h-[240px] w-full "
+        />
+        <h3 className="text-lg font-semibold my-3">
+          GitHub User Name: {gitUserName}
+        </h3>
       </div>
 
-      <div>
-        <h1>Count: {count}</h1>
-        <button onClick={() => setCount(count + 1)}>Increment Count</button>
-        <h1>Name: {name} </h1>
-        <h3>Location: {location}</h3>
+      <div className="flex flex-col gap-3">
+        <h2 className="text-2xl">Count: {count}</h2>
+        <button
+          className="bg-gray-200 p-2 rounded cursor-pointer hover:bg-gray-300"
+          onClick={() => setCount(count + 1)}
+        >
+          Increment Count
+        </button>
+        <h2 className="text-xl">Name: {name} </h2>
+        <h3 className="text-xl">Location: {location}</h3>
       </div>
     </div>
   );
