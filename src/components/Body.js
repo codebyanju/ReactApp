@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedCard } from "./RestaurantCard";
 import ShimmerCard from "./ShimmerCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -18,6 +18,8 @@ const Body = () => {
     setFilteredRestaurants,
   } = useRestaurantsData();
   const onlineStatus = useOnlineStatus();
+
+  const RestaurantCardPromoted = withPromotedCard(RestaurantCard);
 
   // useEffect(() => {
   //   let isFetching = false; // flag to prevent multiple calls
@@ -129,7 +131,14 @@ const Body = () => {
               to={"/res/" + restaurant?.info?.id}
               key={restaurant?.info?.id}
             >
-              <RestaurantCard resData={restaurant} />
+              {/* Higer Order Component */}
+              {restaurant?.info.badges?.imageBadges?.length > 0 ? (
+                <RestaurantCardPromoted resData={restaurant} />
+              ) : (
+                <RestaurantCard resData={restaurant} />
+              )}
+
+              {/* <RestaurantCard resData={restaurant} /> */}
             </Link>
           ))}
 

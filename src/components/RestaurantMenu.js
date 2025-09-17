@@ -16,19 +16,22 @@ const RestaurantMenu = () => {
   return resInfo === null ? (
     <ShimmerCard />
   ) : (
-    <div className="menu">
-      <h1>{name}</h1>
-      <p>
+    <div className="max-w-8/10 mx-auto">
+      <h1 className="text-3xl my-3">{name}</h1>
+      <hr className="border-t border-gray-300 my-4" />
+      <p className="text-lg mb-5 ">
         {cuisines.join(", ")} - {costForTwoMessage}{" "}
       </p>
 
-      <h3>Menu:</h3>
+      <h3 className="text-xl">Menu:</h3>
       <ul>
-        {menuItems?.map((item) => {
-          //   console.log("item", item);
+        {menuItems?.map((item, idx) => {
+          const { id, name, price, defaultPrice } = item?.card?.info;
+          const displayPrice = (price ?? defaultPrice) / 100;
+
           return (
-            <li key={item?.card?.info?.id}>
-              {item?.card?.info?.name} - ₹ {item?.card?.info?.price / 100}
+            <li key={id} className="m-3">
+              {idx + 1}. {name} - ₹ {displayPrice}
             </li>
           );
         })}

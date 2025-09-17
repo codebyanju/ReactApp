@@ -55,6 +55,19 @@ const RestaurantCard = ({ resData }) => {
 
 export default RestaurantCard;
 
+export const withPromotedCard = (Component) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="bg-gray-900 text-white p-1.5 rounded-md absolute text-xs">
+          Promoted
+        </label>
+        <Component {...props} />
+      </div>
+    );
+  };
+};
+
 //Navigate to restaurant menu page on click of restaurant card
 
 // import { useNavigate } from "react-router-dom";
