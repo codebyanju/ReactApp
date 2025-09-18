@@ -18,7 +18,7 @@ const RestaurantCard = ({ resData }) => {
     <div className="flex flex-col w-70 bg-gray-100 rounded-md p-4 gap-2 h-[400px] hover:bg-gray-200 group">
       {/* Image */}
       <img
-        className="rounded-md h-[240px] w-full object-cover object-center "
+        className="rounded-md h-[240px] w-full object-cover object-center"
         alt="res-logo"
         src={CDN_URL + cloudinaryImageId}
       ></img>

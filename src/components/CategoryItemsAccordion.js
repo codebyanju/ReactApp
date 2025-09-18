@@ -18,8 +18,11 @@ const CategoryItemsAccordion = ({ catItems }) => {
                 <span className="text-sm text-gray-600">{description}</span>
               </div>
 
-              <div className="flex items-center max-w-[100px]">
-                <img src={CDN_URL + imageId} alt={name} />
+              <div className="flex items-center  max-w-[100px]">
+                <img src={CDN_URL + imageId} alt={name} className="rounded" />
+                <button className="p-1 rounded shadow bg-black text-white absolute mt-8">
+                  Add +
+                </button>
               </div>
             </div>
 
