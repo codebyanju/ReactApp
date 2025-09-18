@@ -59,7 +59,7 @@ export const withPromotedCard = (Component) => {
   return (props) => {
     return (
       <div>
-        <label className="bg-gray-900 text-white p-1.5 rounded-md absolute text-xs">
+        <label className="bg-gray-900 text-white p-1.5 rounded absolute text-xs">
           Promoted
         </label>
         <Component {...props} />
