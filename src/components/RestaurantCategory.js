@@ -1,11 +1,12 @@
 import { useState } from "react";
 import CategoryItemsAccordion from "./CategoryItemsAccordion";
 
-const RestaurantCategory = ({ catData }) => {
-  const [showItems, setShowItems] = useState(false);
+const RestaurantCategory = ({ catData, showItems, setShowIndex }) => {
+  // const [showItems, setShowItems] = useState(false);
 
   const handleClick = () => {
-    setShowItems(!showItems);
+    // setShowItems(!showItems);
+    setShowIndex();
   };
 
   return (
