@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CategoryItemsAccordion from "./CategoryItemsAccordion";
+import RestaurantCategoryItems from "./RestaurantCategoryItems";
 
 const RestaurantCategory = ({ catData, showItems, setShowIndex }) => {
   // const [showItems, setShowItems] = useState(false);
@@ -9,6 +9,7 @@ const RestaurantCategory = ({ catData, showItems, setShowIndex }) => {
     setShowIndex();
   };
 
+  // Accordion
   return (
     <div>
       <div className="w-full min-h-[60px] bg-gray-50 mx-auto my-3 p-3 shadow-md">
@@ -22,7 +23,7 @@ const RestaurantCategory = ({ catData, showItems, setShowIndex }) => {
           <span>{showItems ? "⬆️" : "⬇️"}</span>
         </div>
 
-        {showItems && <CategoryItemsAccordion catItems={catData.itemCards} />}
+        {showItems && <RestaurantCategoryItems catItems={catData.itemCards} />}
       </div>
     </div>
   );

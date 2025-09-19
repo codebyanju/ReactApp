@@ -1,11 +1,12 @@
 import { CDN_URL } from "../utils/constants";
-const CategoryItemsAccordion = ({ catItems }) => {
+const RestaurantCategoryItems = ({ catItems }) => {
   //   console.log("catitems", catItems);
 
   return (
     <div>
       {catItems.map((item) => {
-        const { id, name, price, description, imageId } = item.card.info;
+        const { id, name, price, defaultPrice, description, imageId } =
+          item.card.info;
 
         console.log(item);
         return (
@@ -13,7 +14,7 @@ const CategoryItemsAccordion = ({ catItems }) => {
             <div className="flex justify-between my-2 py-1 gap-2">
               <div className="flex flex-col">
                 <span className="text-md font-semibold">
-                  {name} - ₹ {price / 100}
+                  {name} - ₹ {price ? price / 100 : defaultPrice / 100}
                 </span>
                 <span className="text-sm text-gray-600">{description}</span>
               </div>
@@ -34,4 +35,4 @@ const CategoryItemsAccordion = ({ catItems }) => {
   );
 };
 
-export default CategoryItemsAccordion;
+export default RestaurantCategoryItems;
