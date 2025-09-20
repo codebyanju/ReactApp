@@ -41,10 +41,12 @@ const Header = () => {
     { link: "/about", title: "About" },
     { link: "/contact", title: "Contact" },
     { link: "/grocery", title: "Grocery" },
+    { link: "/cart", title: "🛒" },
   ];
 
   // Access Context
   const { loggedinUserName } = useContext(UserContext);
+  const count = 4;
 
   return (
     <div className="shadow-sm bg-gray-50 mb-3">
@@ -64,7 +66,13 @@ const Header = () => {
             {navLinks.map((nav) => (
               <li key={nav.link}>
                 <NavLink to={nav.link} className={onLinkActive}>
-                  {nav.title}
+                  {nav.link === "/cart" ? (
+                    <span>
+                      {nav.title} {count > 0 && `(${count} items)`}
+                    </span>
+                  ) : (
+                    nav.title
+                  )}
                 </NavLink>
               </li>
             ))}
@@ -86,7 +94,7 @@ const Header = () => {
               </NavLink>
             </li> */}
 
-            <li>Cart</li>
+            {/* <li>🛒</li> */}
             <li
               onClick={() => {
                 btnName === "Login"

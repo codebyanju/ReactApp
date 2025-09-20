@@ -9,6 +9,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Cart from "./components/Cart";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
@@ -19,7 +20,7 @@ const AppLayout = () => {
     //API call - send username, Pwd
     const apiData = { name: "Anju Shaik" };
 
-    setUserName(data.name);
+    setUserName(apiData.name);
   }, []);
 
   return (
@@ -81,6 +82,7 @@ const appRouter = createBrowserRouter([
         path: "/res/:resId",
         element: <RestaurantMenu />,
       },
+      { path: "/cart", element: <Cart /> },
     ],
   },
 ]);
