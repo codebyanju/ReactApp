@@ -19,9 +19,13 @@ const RestaurantCategoryItems = ({ catItems }) => {
                 <span className="text-sm text-gray-600">{description}</span>
               </div>
 
-              <div className="flex items-center  max-w-[100px]">
-                <img src={CDN_URL + imageId} alt={name} className="rounded" />
-                <button className="p-1 rounded shadow bg-black text-white absolute mt-8">
+              <div className="relative w-32 h-32">
+                <img
+                  src={CDN_URL + imageId}
+                  alt={name}
+                  className="w-full h-full object-cover rounded"
+                />
+                <button className="absolute bottom-1 right-1 p-1 bg-black text-white rounded">
                   Add +
                 </button>
               </div>

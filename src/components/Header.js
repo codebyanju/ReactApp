@@ -41,7 +41,12 @@ const Header = () => {
     { link: "/about", title: "About" },
     { link: "/contact", title: "Contact" },
     { link: "/grocery", title: "Grocery" },
-    { link: "/cart", title: "🛒" },
+    {
+      link: "/cart",
+      title: "🛒",
+      // title: (prefix, postfix) => prefix + "🛒" + postfix,
+      // computed: true,
+    },
   ];
 
   // Access Context
@@ -66,13 +71,8 @@ const Header = () => {
             {navLinks.map((nav) => (
               <li key={nav.link}>
                 <NavLink to={nav.link} className={onLinkActive}>
-                  {nav.link === "/cart" ? (
-                    <span>
-                      {nav.title} {count > 0 && `(${count} items)`}
-                    </span>
-                  ) : (
-                    nav.title
-                  )}
+                  {nav.title}
+                  {nav.link == "/cart" && count > 0 && `(${count} items)`}
                 </NavLink>
               </li>
             ))}

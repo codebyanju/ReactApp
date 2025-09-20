@@ -12,7 +12,7 @@ const RestaurantCategory = ({ catData, showItems, setShowIndex }) => {
   // Accordion
   return (
     <div>
-      <div className="w-full min-h-[60px] bg-gray-50 mx-auto my-3 p-3 shadow-md">
+      <div className="w-6/12 min-h-[60px] bg-gray-50 mx-auto my-3 p-3 shadow-md">
         <div
           className="flex justify-between cursor-pointer"
           onClick={handleClick}
