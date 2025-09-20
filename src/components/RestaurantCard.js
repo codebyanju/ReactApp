@@ -1,4 +1,6 @@
 import { CDN_URL } from "../utils/constants";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 const RestaurantCard = ({ resData }) => {
   // console.log("resData info", resData.info);
@@ -14,8 +16,10 @@ const RestaurantCard = ({ resData }) => {
 
   // const { slaString: deliveryTime } = sla
 
+  const { loggedinUserName } = useContext(UserContext);
+
   return (
-    <div className="flex flex-col w-70 bg-gray-100 rounded-md p-4 gap-2 h-[400px] hover:bg-gray-200 group">
+    <div className="flex flex-col w-70 bg-gray-100 rounded-md p-4 gap-2 h-[430px] hover:bg-gray-200 group">
       {/* Image */}
       <img
         className="rounded-md h-[240px] w-full object-cover object-center"
@@ -49,6 +53,9 @@ const RestaurantCard = ({ resData }) => {
 
       {/* COst */}
       <p className="font-normal text-[rgba(2,6,12,0.6)]">{costForTwo}</p>
+      <p className="font-normal text-[rgba(63,101,158,0.6)]">
+        User: {loggedinUserName}
+      </p>
     </div>
   );
 };

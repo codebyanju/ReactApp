@@ -1,6 +1,7 @@
 import User from "./User";
 import UserClass from "./UserClass";
 import { Component } from "react";
+import UserContext from "../utils/UserContext";
 
 // Class Component
 class About extends Component {
@@ -65,6 +66,18 @@ class About extends Component {
     return (
       <div className="max-w-8/10 mx-auto">
         <h1 className="text-3xl font-bold mb-3">About Us</h1>
+
+        {/* Access Context in class component */}
+        <div>
+          <UserContext.Consumer>
+            {({ loggedinUserName }) => (
+              <div className="text-blue-400">
+                User Context: {loggedinUserName}
+              </div>
+            )}
+          </UserContext.Consumer>
+        </div>
+
         {/* <User
           name="First Child (Functional)"
           location="Hyderabad (Functional)"
@@ -75,7 +88,6 @@ class About extends Component {
         /> */}
         <UserClass name="First Child (Class) " location="Hyderabad (Class)" />
         {/* <UserClass name="Second Child (Class) " location="Hyderabad (Class)" /> */}
-
         <pre>{content}</pre>
       </div>
     );

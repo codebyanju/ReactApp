@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+import UserContext from "./utils/UserContext";
 
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -12,16 +13,28 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    //API call - send username, Pwd
+    const apiData = { name: "Anju Shaik" };
+
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
+    // Context
+    <UserContext.Provider value={{ loggedinUserName: userName, setUserName }}>
+      <div className="flex flex-col min-h-screen">
+        <Header />
 
-      <div className="flex-grow">
-        <Outlet />
+        <div className="flex-grow">
+          <Outlet />
+        </div>
+
+        <Footer />
       </div>
-
-      <Footer />
-    </div>
+    </UserContext.Provider>
   );
 };
 

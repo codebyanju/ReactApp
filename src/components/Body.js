@@ -1,9 +1,10 @@
 import RestaurantCard, { withPromotedCard } from "./RestaurantCard";
 import ShimmerCard from "./ShimmerCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurantsData from "../utils/useRestaurantsData";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   // Local State variable - super powerful
@@ -20,6 +21,8 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
 
   const RestaurantCardPromoted = withPromotedCard(RestaurantCard);
+
+  const { loggedinUserName, setUserName } = useContext(UserContext);
 
   // useEffect(() => {
   //   let isFetching = false; // flag to prevent multiple calls
@@ -82,10 +85,11 @@ const Body = () => {
           <div className="flex gap-3">
             <input
               type="text"
-              className="h-12 w-3xl border rounded-sm border-gray-400 focus:outline-none px-3"
+              className="h-12 w-sm border rounded-sm border-gray-400 focus:outline-none px-3"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
             ></input>
+
             <button
               className="cursor-pointer hover:text-orange-500 "
               onClick={() => {
@@ -114,6 +118,16 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+
+          <div>
+            User Context :
+            <input
+              type="text"
+              className="h-12 w-sm border rounded-sm border-gray-400 focus:outline-none px-3"
+              value={loggedinUserName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+          </div>
         </div>
       </div>
 

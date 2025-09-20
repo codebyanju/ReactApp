@@ -1,7 +1,8 @@
 import { LOGO_URL } from "../utils/constants";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   // Never write useState Hook outside a React component or a custom Hook
@@ -41,6 +42,9 @@ const Header = () => {
     { link: "/contact", title: "Contact" },
     { link: "/grocery", title: "Grocery" },
   ];
+
+  // Access Context
+  const { loggedinUserName } = useContext(UserContext);
 
   return (
     <div className="shadow-sm bg-gray-50 mb-3">
@@ -92,6 +96,7 @@ const Header = () => {
             >
               {btnName}
             </li>
+            <li>{loggedinUserName}</li>
           </ul>
         </div>
       </div>
