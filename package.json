@@ -21,9 +21,11 @@
     "parcel": "^2.15.4"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.9.0",
     "@tailwindcss/postcss": "^4.1.13",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.30.1",
     "tailwindcss": "^4.1.13"
   }

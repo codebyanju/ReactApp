@@ -1,6 +1,14 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../store/cartSlice";
 import { CDN_URL } from "../utils/constants";
+
 const RestaurantCategoryItems = ({ catItems }) => {
-  //   console.log("catitems", catItems);
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    // Dispatch Action
+    dispatch(addItem(item));
+  };
 
   return (
     <div>
@@ -8,7 +16,6 @@ const RestaurantCategoryItems = ({ catItems }) => {
         const { id, name, price, defaultPrice, description, imageId } =
           item.card.info;
 
-        console.log(item);
         return (
           <div key={id}>
             <div className="flex justify-between my-2 py-1 gap-2">
@@ -19,13 +26,16 @@ const RestaurantCategoryItems = ({ catItems }) => {
                 <span className="text-sm text-gray-600">{description}</span>
               </div>
 
-              <div className="relative w-32 h-32">
+              <div className="relative w-42 aspect-square">
                 <img
                   src={CDN_URL + imageId}
                   alt={name}
                   className="w-full h-full object-cover rounded"
                 />
-                <button className="absolute bottom-1 right-1 p-1 bg-black text-white rounded">
+                <button
+                  className="absolute bottom-1 right-1 p-1 bg-black text-white rounded"
+                  onClick={() => handleAddItem(item)}
+                >
                   Add +
                 </button>
               </div>

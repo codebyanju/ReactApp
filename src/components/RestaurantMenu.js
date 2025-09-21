@@ -17,8 +17,6 @@ const RestaurantMenu = () => {
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card || {};
 
-  console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-
   const itemCategories =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => {
       return (
@@ -39,7 +37,7 @@ const RestaurantMenu = () => {
       <h3 className="text-xl mb-4">Menu:</h3>
 
       {itemCategories.map((category, index) => {
-        console.log("category", category);
+        // console.log("category", category);
         return (
           <RestaurantCategory
             catData={category.card.card}

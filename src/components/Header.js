@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   // Never write useState Hook outside a React component or a custom Hook
@@ -51,13 +52,18 @@ const Header = () => {
 
   // Access Context
   const { loggedinUserName } = useContext(UserContext);
-  const count = 4;
+
+  // Subscribing to the Store using Selector
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   const navs = navLinks.map((nav) => (
     <li key={nav.link}>
       <NavLink to={nav.link} className={onLinkActive}>
         {nav.title}
-        {nav.link == "/cart" && count > 0 && `(${count} items)`}
+        {nav.link == "/cart" &&
+          cartItems.length > 0 &&
+          `(${cartItems.length} items)`}
       </NavLink>
     </li>
   ));
@@ -89,28 +95,19 @@ const Header = () => {
         <div>
           <ul id="menu" className="flex items-center gap-10 font-semibold">
             <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
-
             {navs}
-
             {/* 
             <li>
               <NavLink className={onLinkActive} to="/about">
                 About Us
               </NavLink>
-            </li>
-            <li>
-              <NavLink className={onLinkActive} to="/contact">
-                Contact Us
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={onLinkActive} to="/grocery">
-                Grocery
-              </NavLink>
             </li> */}
-
-            {/* <li>🛒</li> */}
-            <li onClick={onLogClick}>{loggedIn ? "LogOut" : "Login"}</li>
+            <li
+              onClick={onLogClick}
+              className="cursor-pointer hover:text-orange-500"
+            >
+              {loggedIn ? "LogOut" : "Login"}
+            </li>
             <li>{loggedinUserName}</li>
           </ul>
         </div>

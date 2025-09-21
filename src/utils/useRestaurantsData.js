@@ -22,8 +22,8 @@ const useRestaurantsData = (resId) => {
     );
   };
 
-  console.log("listOfRestaurants", listOfRestaurants);
-  console.log("filteredRestaurants", filteredRestaurants);
+  // console.log("listOfRestaurants", listOfRestaurants);
+  // console.log("filteredRestaurants", filteredRestaurants);
 
   return {
     listOfRestaurants,

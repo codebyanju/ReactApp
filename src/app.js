@@ -1,6 +1,8 @@
 import { createRoot } from "react-dom/client";
 import { lazy, Suspense, useEffect, useState } from "react";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./store/appStore";
 
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -24,18 +26,21 @@ const AppLayout = () => {
   }, []);
 
   return (
-    // Context
-    <UserContext.Provider value={{ loggedinUserName: userName, setUserName }}>
-      <div className="flex flex-col min-h-screen">
-        <Header />
+    // Store
+    <Provider store={appStore}>
+      {/* Context */}
+      <UserContext.Provider value={{ loggedinUserName: userName, setUserName }}>
+        <div className="flex flex-col min-h-screen">
+          <Header />
 
-        <div className="flex-grow">
-          <Outlet />
+          <div className="flex-grow">
+            <Outlet />
+          </div>
+
+          <Footer />
         </div>
-
-        <Footer />
-      </div>
-    </UserContext.Provider>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
