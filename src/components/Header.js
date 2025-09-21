@@ -18,17 +18,14 @@ const Header = () => {
   // State variables are meant to be created inside your functional component so that each instance of the component maintains its own state.
   // If you define a state variable outside the component, it will be shared across all instances of that component, leading to unexpected behavior. Its not a good practice
   // Always keep them on the top level of the component.
-  const [loggedIn, setLoggedIn] = useState(true);
-  const [dummy, setDummy] = useState(1);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   // const [btnName, setBtnName] = useState("Login");
 
   // If no dependency array is provided => the useEffect runs AFTER every render of the component.
   // If dependency array is empty => the useEffect runs only once after the initial render. (Only Once)
   // If dependency array has variables => the useEffect runs after the initial render and whenever any of the dependencies change.
-  useEffect(() => {
-    // setUSert(user)
-  }, []);
+  useEffect(() => {}, []);
 
   const onLinkActive = ({ isActive }) => {
     const baseStyle = "rounded cursor-pointer";
