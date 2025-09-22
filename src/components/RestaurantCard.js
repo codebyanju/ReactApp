@@ -3,7 +3,7 @@ import { useContext } from "react";
 import UserContext from "../utils/UserContext";
 
 const RestaurantCard = ({ resData }) => {
-  // console.log("resData info", resData.info);
+  // console.log("resData", resData);
 
   const {
     name,
@@ -19,7 +19,10 @@ const RestaurantCard = ({ resData }) => {
   const { loggedinUserName } = useContext(UserContext);
 
   return (
-    <div className="flex flex-col w-70 bg-gray-100 rounded-md p-4 gap-2 h-[430px] hover:bg-gray-200 group">
+    <div
+      className="flex flex-col w-70 bg-gray-100 rounded-md p-4 gap-2 h-[430px] hover:bg-gray-200 group"
+      data-testid="resCard"
+    >
       {/* Image */}
       <img
         className="rounded-md h-[240px] w-full object-cover object-center"

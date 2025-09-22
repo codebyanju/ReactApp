@@ -6,7 +6,8 @@
   "scripts": {
     "start": "parcel --open --no-cache ",
     "build": "parcel build",
-    "test": "jest"
+    "test": "jest",
+    "watch-test": "jest --watch"
   },
   "repository": {
     "type": "git",

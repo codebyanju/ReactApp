@@ -84,6 +84,7 @@ const Body = () => {
         <div className="flex justify-between">
           <div className="flex gap-3">
             <input
+              data-testid="searchInput"
               type="text"
               className="h-12 w-sm border rounded-sm border-gray-400 focus:outline-none px-3"
               value={searchText}
