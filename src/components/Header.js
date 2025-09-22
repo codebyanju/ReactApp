@@ -106,7 +106,7 @@ const Header = () => {
               onClick={onLogClick}
               className="cursor-pointer hover:text-orange-500"
             >
-              {loggedIn ? "LogOut" : "Login"}
+              {loggedIn ? "Logout" : "Login"}
             </li>
             <li>{loggedinUserName}</li>
           </ul>
