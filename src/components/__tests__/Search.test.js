@@ -5,6 +5,7 @@ import Body from "../Body";
 import MOCK_DATA from "./mocks/restaurantList.json";
 import { act } from "react";
 
+// Mock Fetch API
 global.fetch = jest.fn(() => {
   return Promise.resolve({
     json: () => {
@@ -14,6 +15,7 @@ global.fetch = jest.fn(() => {
 });
 
 it("Search for text input burger", async () => {
+  // act() ensures all state updates & effects finish before tests run
   await act(async () =>
     render(
       <BrowserRouter>
