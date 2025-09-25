@@ -17,7 +17,7 @@ const RestaurantCategoryItems = ({ catItems }) => {
           item.card.info;
 
         return (
-          <div key={id}>
+          <div key={id} data-testid="foodItems">
             <div className="flex justify-between my-2 py-1 gap-2">
               <div className="flex flex-col">
                 <span className="text-md font-semibold">
